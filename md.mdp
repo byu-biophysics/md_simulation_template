@@ -1,0 +1,61 @@
+integrator               = md
+dt                       = 0.002
+nsteps                   = 1700000
+
+nstlog                   = 5000
+nstenergy                = 5000
+nstxout-compressed       = 5000
+
+continuation             = yes
+constraints              = h-bonds
+constraint-algorithm     = lincs
+
+cutoff-scheme            = Verlet
+
+coulombtype              = PME
+rcoulomb                 = 1.2
+
+vdwtype                  = cutoff
+rvdw                     = 1.2
+rlist                    = 1.2
+rvdw-switch              = 1.0
+DispCorr                 = no
+
+tcoupl                   = V-rescale
+tc-grps                  = System
+tau-t                    = 0.1
+ref-t                    = 300
+
+pcoupl                   = Parrinello-Rahman
+tau-p                    = 2.0
+compressibility          = 4.5e-5
+ref-p                    = 1.0
+
+; TODO --> use this section for constant acceleration pulling, else comment it out
+; Acceleration Groups
+; acc-grps                 = accel_group
+; accelerate               = 0.0 0.0 -0.01
+
+; TODO --> use this section for constant velocity pullingm else comment it out
+; Umbrella Pulling
+; pull			= yes
+; pull-nstfout		= 100
+; pull-fout-average	= yes
+; pull-print-components	= no
+; pull-nstxout		= 100
+; pull-xout-average	= yes
+; pull-ngroups		= 2
+; pull-ncoords		= 1
+; pull-group1-name	= accel_group
+; pull-group2-name	= hold_group
+; pull-coord1-type	= umbrella
+; pull-coord1-geometry	= direction
+; pull-coord1-groups	= 1 2
+; pull-coord1-vec	= 0.0 0.0 1.0
+; pull-coord1-init	= -4.14039
+; pull_coord1_start	= no
+; pull-group2-pbcatom	= 56049
+; pull-pbc-ref-prev-step-com = yes
+; pull_coord1_rate	= 0.005
+; pull_coord1_k		= 1000
+
