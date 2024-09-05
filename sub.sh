@@ -5,6 +5,8 @@
 #SBATCH --nodes=1   # number of nodes
 #SBATCH --gres=gpu:4
 #SBATCH --mem-per-cpu=5G   # memory per CPU core
+
+# TODO --> Set your job name
 #SBATCH -J "your_job_name"   # job name
 
 # Set the max number of threads to use for programs using OpenMP. Should be <= ppn. Does nothing if the program doesn't use OpenMP.
@@ -31,8 +33,10 @@ echo SOL | gmx genion -s ions.tpr -o system_ions.pdb -p system.top -pname NA -nn
 #echo "Creating Index File" 
 #gmx make_ndx -f system_ions.pdb -o system.ndx<<EOF
 #case
-#chain A 
+#chain to accelerate 
 #name 17 accel_group
+#!17
+#name 18 hold_group
 #q
 #EOF
 
